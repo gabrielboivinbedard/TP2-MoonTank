@@ -1,18 +1,6 @@
 import pygame
 import sys
 import os
-
-project_dir = os.path.abspath(os.path.dirname(__file__))
-
-# Append 'src' to the project directory to get the absolute path to the 'src' directory
-src_path = os.path.join(project_dir, 'src')
-asset_path = os.path.join(project_dir, 'assets')
-sounds_path = os.path.join(project_dir, 'sounds')
-# Add the absolute path to sys.path
-sys.path.append(src_path)
-sys.path.append(asset_path)
-sys.path.append(sounds_path)
-
 from src.player import *
 from src.wall import *
 from src.level import levels
@@ -20,6 +8,7 @@ from src.color import Color
 from src.collectible import *
 from src.orientation import *
 from src.game import *
+from src.path import*
 
 pygame.init()
 
@@ -38,7 +27,6 @@ game = Game()
 player = Player(game)
 
 game.loadLevel(player)
-
 
 selected = 1
 # Main game loop

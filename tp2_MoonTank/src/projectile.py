@@ -1,27 +1,29 @@
 import pygame
 from abc import ABC, abstractmethod 
 import sys
-sys.path.append('src')
-from color import Color
-from orientation import *
+from src.color import Color
+from src.orientation import *
+from src.path import *
 
+print(asset_path)
+br_path = os.path.join(asset_path, 'br.png')
+bg_path = os.path.join(asset_path, 'bg.png')
+bb_path = os.path.join(asset_path, 'bb.png')
 
-colorRed = [255, 0, 0]
 
 class Projectile(pygame.sprite.Sprite):
     def __init__(self, x, y, color, orientation):
         super().__init__()
         
-
         if color == Color.RED:
             self.color = Color.RED
-            self.image = pygame.image.load('./tp2_base/assets/br.png')
+            self.image = pygame.image.load(br_path)
         elif color == Color.GREEN:
             self.color = Color.GREEN
-            self.image = pygame.image.load('./tp2_base/assets/bg.png')
+            self.image = pygame.image.load(bg_path)
         elif color == Color.BLUE:
             self.color = Color.BLUE
-            self.image = pygame.image.load('./tp2_base/assets/bb.png')
+            self.image = pygame.image.load(bb_path)
 
         self.rect = self.image.get_rect()
         self.rect.x = x

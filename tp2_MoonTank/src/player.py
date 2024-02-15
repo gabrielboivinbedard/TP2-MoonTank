@@ -1,9 +1,11 @@
 import pygame
-from orientation import *
-from projectile import Projectile
-from color import Color
-from main import sounds_path
+from src.orientation import *
+from src.projectile import Projectile
+from src.color import Color
+from src.path import *
 import os
+
+tank_path = os.path.join(asset_path, 'tank.png')
 
 pygame.mixer.init()
 
@@ -14,7 +16,7 @@ class Player(pygame.sprite.Sprite):
     def __init__(self, game):
         super().__init__()
         self.orientation = Orientation.RIGHT
-        self.original_image = pygame.image.load('./tp2_base/assets/tank.png')
+        self.original_image = pygame.image.load(tank_path)
         self.image = self.original_image
         self.rect = self.image.get_rect()
         self.rect.center = (100, 100)

@@ -1,12 +1,14 @@
 import pygame
 from abc import ABC, abstractmethod 
-import sys
-from main import sounds_path
 import os
+from src.color import Color
+from src.player import *
+from src.path import *
 
-sys.path.append('src')
-from color import Color
-from player import *
+bulletR_path = os.path.join(asset_path, 'bulletR.png')
+bulletG_path = os.path.join(asset_path, 'bulletG.png')
+bulletB_path = os.path.join(asset_path, 'bulletB.png')
+flag_path = os.path.join(asset_path, 'flag.png')
 
 class Collectible(ABC, pygame.sprite.Sprite): 
     @abstractmethod
@@ -19,13 +21,13 @@ class Bullet(Collectible):
         self.name = "bullet"
         if color == Color.RED:
             self.color = Color.RED
-            self.image = pygame.image.load('./tp2_base/assets/bulletR.png')
+            self.image = pygame.image.load(bulletR_path)
         elif color == Color.GREEN:
             self.color = Color.GREEN
-            self.image = pygame.image.load('./tp2_base/assets/bulletG.png')
+            self.image = pygame.image.load(bulletG_path)
         elif color == Color.BLUE:
             self.color = Color.BLUE
-            self.image = pygame.image.load('./tp2_base/assets/bulletB.png')
+            self.image = pygame.image.load(bulletB_path)
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
@@ -44,7 +46,7 @@ class Flag(Collectible):
     def __init__(self, x, y):
         super().__init__()
         self.name = "flag"
-        self.image = pygame.image.load('./tp2_base/assets/flag.png')
+        self.image = pygame.image.load(flag_path)
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
